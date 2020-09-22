@@ -13,5 +13,5 @@
     
 	查看過後 沒問題可以選擇融合兩項改變 Accept Both Change =>然後儲存檔案 => Commit merge
 	
-	有任何問題請回到github選擇 Abort merge  然後通知威丞 並跳過4
+
   
