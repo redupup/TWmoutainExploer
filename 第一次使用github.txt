@@ -1,4 +1,4 @@
-1. �i�Jhttps://github.com/���U�ϥΪ̱b��
+﻿1. �i�Jhttps://github.com/���U�ϥΪ̱b��
 2. �ǰe�ϥΪ̱b�����޲z��
 3. ��o�ϥα��v
 4. �i�Jhttps://desktop.github.com/�U���޲z�t�� GitHub�ୱ��
@@ -11,5 +11,5 @@
       �W�� name : user_XX(�ۤv�Q�Ϊ��W��)
       �U���� : username
 111
-123
+
 
