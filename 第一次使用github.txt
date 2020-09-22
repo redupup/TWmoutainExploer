@@ -1,18 +1,15 @@
-1. ¶i¤Jhttps://github.com/µù¥U¨Ï¥ÎªÌ±b¸¹
-2. ¶Ç°e¨Ï¥ÎªÌ±b¸¹µ¹ºÞ²zªÌ
-3. Àò±o¨Ï¥Î±ÂÅv
-4. ¶i¤Jhttps://desktop.github.com/¤U¸üºÞ²z¨t²Î GitHub®à­±ª©
-5. ¶i¤Jgithub®à­±ª© file->option->account µn¤J
-6. ¦bC¼Ñ³Ð³y¸ê®Æ§¨ "±MÃD" ¸Ì­±³Ð³y "local" »P "remote"
+1. ï¿½iï¿½Jhttps://github.com/ï¿½ï¿½ï¿½Uï¿½Ï¥ÎªÌ±bï¿½ï¿½
+2. ï¿½Ç°eï¿½Ï¥ÎªÌ±bï¿½ï¿½ï¿½ï¿½ï¿½Þ²zï¿½ï¿½
+3. ï¿½ï¿½oï¿½Ï¥Î±ï¿½ï¿½v
+4. ï¿½iï¿½Jhttps://desktop.github.com/ï¿½Uï¿½ï¿½ï¿½Þ²zï¿½tï¿½ï¿½ GitHubï¿½à­±ï¿½ï¿½
+5. ï¿½iï¿½Jgithubï¿½à­±ï¿½ï¿½ file->option->account ï¿½nï¿½J
+6. ï¿½bCï¿½Ñ³Ð³yï¿½ï¿½Æ§ï¿½ "ï¿½Mï¿½D" ï¿½Ì­ï¿½ï¿½Ð³y "local" ï¿½P "remote"
 
 8. file -> clone repository -> URL : https://github.com/james455333/git-exsample.git
-      ¸ô®| path :  ±MÃD/remote
-9. ¦bgithub¸Ì³Ð³y¤À¤ä Branch -> Create a branch
-      ¦WºÙ name : user_XX(¦Û¤v·Q¥Îªº¦WºÙ)
-      ¤U¤è¿ï¾Ü : username
-
-
+      ï¿½ï¿½ï¿½| path :  ï¿½Mï¿½D/remote
+9. ï¿½bgithubï¿½Ì³Ð³yï¿½ï¿½ï¿½ï¿½ Branch -> Create a branch
+      ï¿½Wï¿½ï¿½ name : user_XX(ï¿½Û¤vï¿½Qï¿½Îªï¿½ï¿½Wï¿½ï¿½)
+      ï¿½Uï¿½ï¿½ï¿½ï¿½ : username
 111
-
-
+123
 
