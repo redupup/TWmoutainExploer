@@ -1,0 +1,15 @@
+1. 進入https://github.com/註冊使用者帳號
+2. 傳送使用者帳號給管理者
+3. 獲得使用授權
+4. 進入https://desktop.github.com/下載管理系統 GitHub桌面版
+5. 進入github桌面版 file->option->account 登入
+6. 在C槽創造資料夾 "專題" 裡面創造 "local" 與 "remote"
+
+8. file -> clone repository -> URL : https://github.com/james455333/git-exsample.git
+      路徑 path :  專題/remote
+9. 在github裡創造分支 Branch -> Create a branch
+      名稱 name : user_XX(自己想用的名稱)
+      下方選擇 : username
+
+
+

@@ -1,0 +1,72 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+ 
+#container{
+    position: absolute;
+    background-color: gray;
+    height: 100%;
+    width: 100%;
+
+}
+
+header{
+    position: relative;
+    background-color: rgb(124, 228, 171);
+    width: 100%;
+    height: 10%;
+    /* border: 1px solid red; */
+}
+
+nav{
+    position: relative;
+    background-color: rgb(110, 194, 194);
+    text-align: center;
+    height: 5%;
+    width: 100%;
+}
+/* nav h3{
+    display: inline-flex;
+    padding-left: 10%;
+    margin: 10px;
+} */
+
+#aside1{
+    position: relative;
+    /* top: 15%; */
+    /* left: 0%; */
+    height: 65%;
+    width: 10%;
+    /* border: 1px solid red; */
+    background-color: chartreuse;
+}
+
+#aside2{
+    position: absolute;
+    top: 80%;
+    left: 0%;
+    height: 17%;
+    width: 10%;
+    background-color: rgb(162, 209, 115);
+}
+#content{
+    position: absolute;
+    top: 15%;
+    left: 10%;
+    width: 90%;
+    height: 82%;
+    /* border: 1px solid red; */
+    background-color: burlywood;
+}
+
+footer{
+    position: absolute;
+    background-color: rgb(252, 71, 5);
+    /* border: 10px solid red;  */
+    top: 97%;
+    height: 3%;
+    width: 100%;
+}
+
+
