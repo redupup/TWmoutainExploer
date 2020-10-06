@@ -48,26 +48,28 @@ for (let i = 1; i <= 4; i++) {
 
     })
 }
-$("#sliderLi1").text("登山查詢").css({
-    "list-style-image" : "url('images/indexLi1.png')",
-    "font-size" : "50px",
-    "width" : "200px"
-})
-$("#sliderLi2").text("會員登入").css({
+$("#sliderLi1").text("會員登入").css({
     "list-style-image" : "url('images/indexLi4.png')",
     "font-size" : "50px",
     "width" : "200px"
 })
-$("#sliderLi3").text("地區天氣查詢").css({
+$("#sliderLi2").text("購物商城").css({
     "list-style-image" : "url('images/indexLi2.png')",
     "font-size" : "50px",
-    "width" : "300px"
+    "width" : "200px"
 })
-$("#sliderLi4").text("露營地/小屋查詢").css({
+$("#sliderLi3").text("山岳查詢").css({
+    "list-style-image" : "url('images/indexLi1.png')",
+    "font-size" : "50px",
+    "width" : "200px"
+})
+$("#sliderLi4").text("露營地/山中小屋查詢").css({
     "list-style-image" : "url('images/indexLi3.png')",
     "font-size" : "50px",
-    "width" : "370px"
+    "width" : "475px"
 })
+
+
 
 window.setTimeout(function(){
     $("#bigTitle").css({
@@ -90,10 +92,10 @@ for (let i = 1; i <= 4; i++) {
 }
 
 $("#bigTitle").click(function(){
-    $("#homeCon").fadeOut(1500);
-    window.setTimeout(function(){
-        $("#container").css("display","block");
-    },1000)
+    $("#homeCon").fadeOut(1500,function(){
+        window.location.replace("index.jsp");
+    });
+   
 
 })
 
