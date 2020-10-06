@@ -28,7 +28,9 @@
 
 <body>
 
-<!-- <c:set var='functionCheck'  value="none" scope="session"/> -->
+<c:set var='functionCheck'  value="mountain" scope="session"/>
+<c:set var='secondCheck'  value="mountain" scope="session"/>
+
 
 	<div id="container">
 	
@@ -39,6 +41,8 @@
 		<!-- 主要內容 -->
 		<div id="content">
 			<div id="barNav"></div>
+			<
+			<jsp:include page='/fragment/topbar.jsp' />
 			
 			
 			
