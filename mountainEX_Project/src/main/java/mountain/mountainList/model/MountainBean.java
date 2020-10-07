@@ -14,7 +14,7 @@ public class MountainBean {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getDescription() {
+	public String getDescription() { //description
 		return description;
 	}
 	public void setDescription(String description) {

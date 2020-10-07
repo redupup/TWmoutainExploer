@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+
+#stocker{
+	position : relative;
+	height :2.5%;
+	/* background-color : yellow; */
+}
+
+#m_present{
+	background-color : 	#FFFAF4;
+}
+
+.d_nav{
+	position : relative;
+	font-size : 150%;
+	height : 10%;
+	width : 20%; 
+	top : 5%;
+	left : 30%;
+	display : inline-flex;
+    align-items:center;
+    justify-content:center;
+    background-color: #D3FF93;
+  	border-radius : 20px;
+}
+
+.d_nav a{
+	cursor : pointer;
+}
+
+
+.d_nav a:link{
+    text-decoration: none;
+}
+.d_nav a:visited{
+    color: rgb(139, 87, 8);
+}
+.d_nav a:hover{
+    text-decoration: none;
+}
+
+
+.act_manage{
+	display : none;
+	position : absolute;
+	height : 82.5%;
+	width : 95%;
+	left :2.5%;
+	top : 15%;
+	background-color : 		#FFFFF4;
+	border-radius : 25px;
+}
+
+.act_active{
+	display : block;
+}
+.act_name{
+	width : 35%;
+}
+.act_row{
+	height : 30%;
+}

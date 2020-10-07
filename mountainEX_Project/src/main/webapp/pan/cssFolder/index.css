@@ -41,26 +41,17 @@ nav{
     border: 5px outset rgb(198, 198, 235);
     display: flex;
 }
-nav div{
+.top{
     /* display: inline-flex; */
     text-align: justify;
     margin: auto;
     /* border:  1px solid red; */
     height: auto;
     cursor: pointer;
-    font-size: 100%;
+    font-size: 150%;
     transition: 0.25s;
 }
-#barNav{
-    position : absolute;
-    border : 5px ridge rgb(192, 252, 229);
-    transition: 1s;
-    left : 0% ;
-    height : 10%;
-    width: 50%;
-    background-color: rgb(169, 252, 176);
-	display:none;
-}
+
 
 #content{
     position: absolute;

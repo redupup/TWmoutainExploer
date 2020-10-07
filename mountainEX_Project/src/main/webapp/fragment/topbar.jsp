@@ -36,7 +36,7 @@
 			</div>
 		</c:if>
 		<c:if test='${ !empty sessionScope.adminBean }'>
-			<div class="top" id="admin" class="text-info" >
+			<div class="" id="admin" class="text-info top" >
 				<c:choose>
 					<c:when test="${ functionCheck != 'maintainInfo' }"> 
 						<a href='<c:url value="/maintain/maintain.jsp" />'>資料維護</a>
@@ -47,20 +47,20 @@
 				</c:choose>
 			</div>
 		</c:if>
-		<div class="top" id="mountain" class="text-info">
+		<div  id="mountain" class="text-info top">
 			<c:choose>
 				<c:when test="${ functionCheck != 'mountain' }"> 
-					<a href='<c:url value="/mountain/mountainIndex.jsp" />'>百戰百岳</a>
+					<a href='<c:url value="/mountain/mountainIndex.jsp"/>'>百戰百岳</a>
 				</c:when>
 				<c:otherwise>
 					百戰百岳
 				</c:otherwise>
 			</c:choose>
 		</div>
-		<div class="top" id="house" class="text-info">
+		<div  id="house" class="text-info top">
 			<c:choose>
 				<c:when test="${ functionCheck != 'house' }"> 
-					<a href='<c:url value="/house/hList/house.jsp" />'>露營地/山中小屋</a>
+					<a href='<c:url value="/ttttt" />'>露營地/山中小屋</a>
 				</c:when>
 				<c:otherwise>
 					露營地/山中小屋
@@ -68,7 +68,7 @@
 			</c:choose>
 		
 		</div>
-		<div class="top" id="shopping" class="text-info">
+		<div  id="shopping" class="text-info top">
 			<c:choose>
 				<c:when test="${ functionCheck != 'shopping' }"> 
 					<a href='<c:url value="/shopping/shoppingIndex.jsp" />'>購物商城</a>
@@ -80,7 +80,7 @@
 		
 		</div>
 		
-		<div class="top" id="platform" class="text-info">
+		<div  id="platform" class="text-info top">
 			<c:choose>
 				<c:when test="${ functionCheck != 'platform' }"> 
 					<a href='<c:url value="/platform/title/platform.jsp" />'>討論區</a>
