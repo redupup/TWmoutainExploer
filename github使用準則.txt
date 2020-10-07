@@ -1,0 +1,17 @@
+1. 任何新增、修改或刪除任何專題時 都用 user_XX(自己的)
+
+2. 每次完成修改 進入github 先 commit 再 push
+
+3. 每次commit description必定要輸入 XXX(姓名)於 XX/XX(月/日) commit
+    如 : 潘威丞 09/22 commit
+
+3. user_XX push 完成後切換至update_branch
+
+4. Branch -> Merge Into current Branch 選擇 user_XX 然後push
+
+* 如果4 出現 衝突 conflict 點選 open in Visual Studio Code 查看衝突
+    
+	查看過後 沒問題可以選擇融合兩項改變 Accept Both Change =>然後儲存檔案 => Commit merge
+	
+
+  

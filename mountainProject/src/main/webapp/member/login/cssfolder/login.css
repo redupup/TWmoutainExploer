@@ -1,0 +1,13 @@
+@charset "UTF-8";
+
+
+
+#loginFrame{
+	
+	position:absolute;
+	top:25%;
+	left:25%;
+	height:50%;
+	width:50%;
+	
+}

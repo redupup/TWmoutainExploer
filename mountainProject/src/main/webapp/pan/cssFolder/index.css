@@ -1,0 +1,93 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+ 
+#container{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    
+}
+
+header{
+    position: relative;
+    /* background-color: rgb(170, 206, 218); */
+    width: 100%;
+    height: 15%;
+    background-image: url('../images/topBar.jpg');
+    background-size: cover;
+    background-position: 50%;
+}
+
+nav{
+    position: relative;
+    background-color: rgb(252, 253, 253);
+    text-align: center;
+    height: 7.5%;
+    border: 5px outset rgb(198, 198, 235);
+    display: flex;
+}
+nav div{
+    /* display: inline-flex; */
+    text-align: justify;
+    margin: auto;
+    /* border:  1px solid red; */
+    height: auto;
+    cursor: pointer;
+    font-size: 150%;
+    transition: 0.25s;
+}
+#barNav{
+    position : absolute;
+    border : 5px ridge rgb(192, 252, 229);
+    transition: 1s;
+    left : 0% ;
+    height : 10%;
+    width: 50%;
+    background-color: rgb(169, 252, 176);
+	display:none;
+}
+
+#content{
+    position: absolute;
+    left: 0%;
+    width: 100%;
+    height: 75%;
+    /* border: 1px solid red; */
+    background-color: rgb(233, 189, 132);
+}
+
+footer{
+    position: absolute;
+    background-color: rgb(183, 221, 191);
+    /* border: 10px solid red;  */
+    top: 97%;
+    height: 3%;
+    width: 100%;
+}
+
+nav div a:link{
+//設定還沒有瀏覽過的連結
+text-decoration:none;
+color:	#00CACA;
+
+}
+
+nav div a:visited {
+//設定已經瀏覽過的連結
+color:	#00CACA;
+}
+
+nav div a:active{
+	color: 	#02DF82;
+}
+nav div a:hover{
+	text-decoration:none;
+}
+
+nav div{
+	color: 	#02DF82;
+}
+
+

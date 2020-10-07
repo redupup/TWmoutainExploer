@@ -1,0 +1,15 @@
+﻿1. �i�Jhttps://github.com/���U�ϥΪ̱b��
+2. �ǰe�ϥΪ̱b�����޲z��
+3. ��o�ϥα��v
+4. �i�Jhttps://desktop.github.com/�U���޲z�t�� GitHub�ୱ��
+5. �i�Jgithub�ୱ�� file->option->account �n�J
+6. �bC�ѳгy��Ƨ� "�M�D" �̭��гy "local" �P "remote"
+
+8. file -> clone repository -> URL : https://github.com/james455333/git-exsample.git
+      ���| path :  �M�D/remote
+9. �bgithub�̳гy���� Branch -> Create a branch
+      �W�� name : user_XX(�ۤv�Q�Ϊ��W��)
+      �U���� : username
+111
+
+
