@@ -13,5 +13,9 @@
     
 	查看過後 沒問題可以選擇融合兩項改變 Accept Both Change =>然後儲存檔案 => Commit merge
 	
+<<<<<<< HEAD
        *****如果Merge時有任何問題，先確保自己分支有push上雲端，剩下的可以後續再處理****
+=======
+
+>>>>>>> parent of ad185f9... Revert "Revert "empty""
   
