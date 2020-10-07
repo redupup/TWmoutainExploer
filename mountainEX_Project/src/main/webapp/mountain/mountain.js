@@ -1,4 +1,7 @@
 
+
+
+
 $(function(){
 	
 	
@@ -89,8 +92,9 @@ function switchSecond(){
 	let total = $(this).parent().find("div");
 	let other = $(this).nextAll();
 	let self = total.length-other.length
-	$(this).parent().nextAll().eq(self-1).addClass("co_active").siblings().removeClass("co_active")
-	$(this).parent().nextAll().eq(self-1)
+	$(this).parent().nextAll().eq(self-1).addClass("co_active")
+	.siblings(".dataCon").removeClass("co_active")
+	
 }
 
 

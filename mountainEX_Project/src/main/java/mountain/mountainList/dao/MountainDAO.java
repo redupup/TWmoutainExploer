@@ -53,6 +53,7 @@ public class MountainDAO {
 						StringBuffer result = new StringBuffer();
 						while ( (buffer = isr.read(chars)) != -1) {
 							result.append(chars, 0, buffer);
+							
 						}
 						mB.setDescription(result.toString());
 						

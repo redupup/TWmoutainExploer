@@ -90,8 +90,17 @@
 
 #m_present .third_bar a{
 	cursor: pointer;
+	color: rgb(139, 87, 8);
 }
-
+.third_bar a:link{
+    text-decoration: none;
+}
+.third_bar a:visited{
+    color: rgb(139, 87, 8);
+}
+.third_bar a:hover{
+    text-decoration: none;
+}
 .dataCon{
 	position: relative;
 	background-color : #DEFFAC;
@@ -107,6 +116,7 @@
 	height : 15%;
 	width : 100%;
 	display : none;
+	overflow : auto;
 }
 
 .peakList .peak{
@@ -126,7 +136,7 @@
     
 }
 
-#m_img{
+.m_img{
 	position : relatvie;
 	margin-top : 1.5%;
 	margin-left : 2.5%; 
@@ -134,12 +144,12 @@
 	height : 50%;
 	float : left;
 }
-#m_img img{
+.m_img img{
 	width : 100%;
 	height : 100%;
 }
 
-#m_descriptiion{
+.m_descriptiion{
 	border : 5px solid 	#bdd10c;
 	background-color : #bae901;
 	text-align : justify;
@@ -155,7 +165,7 @@
 	
 }
 
-#m_advice{
+.m_advice{
 	border : 5px solid 	#bdd10c;
 	background-color : #bae901;
 	border-radius : 20px;
@@ -167,7 +177,7 @@
 	overflow : auto;
 }
 
-#m_traffic{
+.m_traffic{
 	border : 5px solid 	#bdd10c;
 	background-color : #bae901;
 	border-radius : 20px;

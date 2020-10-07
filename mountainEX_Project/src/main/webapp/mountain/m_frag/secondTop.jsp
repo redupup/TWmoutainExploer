@@ -7,10 +7,10 @@
 	<div class="use-flexbox first">
 		<a>登山活動設計</a>
 		<div>
-			<a>新增活動</a>
+			<a>活動管理</a>
 		</div>
 		<div>
-			<a>管理活動</a>
+			<a>新增活動</a>
 		</div>
 	</div>
 	<div class="use-flexbox first">

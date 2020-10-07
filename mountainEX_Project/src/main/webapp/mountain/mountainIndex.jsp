@@ -15,7 +15,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>旅遊地點天氣查詢</title>
+<title>岳進者</title>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
 	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
@@ -73,27 +73,27 @@
 
 						<c:forEach var="peakName" items="${mountainBean}" varStatus="vs">
 							<c:if test="${ peakName.npName == tname }">
-								<div id="dataContainer" class="dataCon">
+								<div class="dataCon">
 									<c:if test="${vs.first}">
 										<script>
-											$("#dataContainer").addClass(
+											$(".dataCon").addClass(
 													"co_active")
 										</script>
 									</c:if>
 
-									<div id="m_img">
+									<div class="m_img">
 										<img src="${peakName.imgUrl }">
 									</div>
 
-									<div id="m_descriptiion">
+									<div class="m_descriptiion">
 										<p>${peakName.description }</p>
 									</div>
 
-									<div id="m_advice">
+									<div class="m_advice">
 										<p>${peakName.advice }</p>
 									</div>
 
-									<div id="m_traffic">
+									<div class="m_traffic">
 										<p>${peakName.traffic }</p>
 									</div>
 								</div>
@@ -115,20 +115,20 @@
 					<c:if test="${ ! empty mountainBean}">
 						<c:forEach var="peakName" items="${mountainBean}" varStatus="vs">
 							<c:if test="${peakName.npName == tname }">
-								<div id="dataContainer" class="dataCon">
-									<div id="m_img">
+								<div class="dataCon">
+									<div class="m_img">
 										<img src="${peakName.imgUrl }">
 									</div>
 
-									<div id="m_descriptiion">
+									<div class="m_descriptiion">
 										<p>${peakName.description }</p>
 									</div>
 
-									<div id="m_advice">
+									<div class="m_advice">
 										<p>${peakName.advice }</p>
 									</div>
 
-									<div id="m_traffic">
+									<div class="m_traffic">
 										<p>${peakName.traffic }</p>
 									</div>
 								</div>
@@ -149,25 +149,25 @@
 
 						<c:forEach var="peakName" items="${mountainBean}" varStatus="vs">
 							<c:if test="${peakName.npName == tname }">
-								<div id="dataContainer" class="dataCon">
-									<div id="peakList">
+								<div class="dataCon">
+									<div class="peakList">
 										<div class="peak">
 											<a>${peakName.name}</a>
 										</div>
 									</div>
-									<div id="m_img">
+									<div class="m_img">
 										<img src="${peakName.imgUrl }">
 									</div>
 
-									<div id="m_descriptiion">
+									<div class="m_descriptiion">
 										<p>${peakName.description }</p>
 									</div>
 
-									<div id="m_advice">
+									<div class="m_advice">
 										<p>${peakName.advice }</p>
 									</div>
 
-									<div id="m_traffic">
+									<div class="m_traffic">
 										<p>${peakName.traffic }</p>
 									</div>
 								</div>
@@ -193,7 +193,7 @@
 		<footer> </footer>
 
 	</div>
-
+	
 
 	<script src="https://code.jquery.com/jquery-3.5.1.js"
 		integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
