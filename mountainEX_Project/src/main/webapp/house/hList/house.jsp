@@ -15,7 +15,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>旅遊地點天氣查詢</title>
+<title>露營地/山中小屋</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" 
 	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 <link
@@ -39,8 +39,21 @@
 		
 		<!-- 主要內容 -->
 		<div id="content">
-			<div id="barNav"></div>
+			<form  action="<c:url value='HouseServlet'></c:url>" method="post">
+			<div class="moup">
+                <div class="search">
+                    <label>山中小屋</label>
+          <%--          <select class="form-control" tabindex="28">
+                        <option value>請選擇</option>
+                    </select>    --%>
+                    <input type="text" name="inputAdd" value="">
+                    <input type="submit" value="查詢">
+                
 			
+				</div>
+
+            </div>
+			 </form>
 
 		</div>
 
