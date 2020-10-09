@@ -17,25 +17,25 @@ public class HouseBeen {
 	public String getName() {
 		return name;
 	}
-	public void setName(String Name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 	public Integer getSeat() {
 		return seat;
 	}
-	public void setSeat(Integer Seat) {
+	public void setSeat(Integer seat) {
 		this.seat = seat;
 	}
 	public Integer getCampSeat() {
 		return campseat;
 	}
-	public void setCampSeat(Integer CampSeat) {
+	public void setCampSeat(Integer campseat) {
 		this.campseat = campseat;
 	}
 	public String getHight() {
 		return hight;
 	}
-	public void setHight(String Hight) {
+	public void setHight(String hight) {
 		this.hight = hight;
 	}
 	

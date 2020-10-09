@@ -19,10 +19,10 @@ public class MountainHouseDAO_JDBC {
 	DataS dataS = new DataS();
 	public List<HouseBeen> listMH(String add){
 		List<HouseBeen> hBList = new ArrayList<>();
-		System.out.println("1");
 		dataS.setUsername("HI");
 		dataS.setUserPassword("HI");
 		DataSource datasoure = dataS.getDatasoure();
+		System.out.println("1");
 		try (
 				Connection connection = datasoure.getConnection();
 				){
@@ -53,15 +53,15 @@ public class MountainHouseDAO_JDBC {
 		dataS.setUsername("HI");
 		dataS.setUserPassword("HI");
 		DataSource datasoure = dataS.getDatasoure();
+		System.out.println("3");
 	
-		System.out.println("2");
 		try (
 				Connection connection = datasoure.getConnection();
-				PreparedStatement stmt = connection.prepareStatement("select * from mountainhouse where mountainname=?");
+				PreparedStatement stmt = connection.prepareStatement("select * from mountainhouse where mountainname like ?");
 //			ResultSet rs = stmt.executeQuery();
 				){
 		
-			stmt.setString(1, add);
+			stmt.setString(1, "%"+add+"%");
 			ResultSet rs=stmt.executeQuery();
 			
 			while(rs.next()) {
@@ -87,15 +87,15 @@ public class MountainHouseDAO_JDBC {
 		dataS.setUsername("HI");
 		dataS.setUserPassword("HI");
 		DataSource datasoure = dataS.getDatasoure();
-		
 		System.out.println("name");
+		
 		try (
 				Connection connection = datasoure.getConnection();
-				PreparedStatement stmt = connection.prepareStatement("select * from mountainhouse where name=?");
+				PreparedStatement stmt = connection.prepareStatement("select * from mountainhouse where name like ?");
 //			ResultSet rs = stmt.executeQuery();
 				){
 		
-			stmt.setString(1, add);
+			stmt.setString(1, "%"+add+"%");
 			ResultSet rs=stmt.executeQuery();
 			
 			while(rs.next()) {

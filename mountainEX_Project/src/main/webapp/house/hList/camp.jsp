@@ -59,35 +59,43 @@
 		
 		<!-- 主要內容 -->
 		<div id="content">
-		<form action="<c:url value='HouseServlet'></c:url>"method='post'>	
+		<form action="<c:url value='CampServlet'></c:url>"method='post'>	
 		<div class="moup">
                 <div class="search">
-                <h3>觀看</h3>
+                <h3>觀看營地</h3>
                 <input type="submit" value="查詢">
 		</div></div>
 		</form>
          
-		<form action="<c:url value='SelectMountainServlet'></c:url>"method='post'>	
+		<form action="<c:url value='SelectCampCityServlet'></c:url>"method='post'>	
 			<div class="moup">
                 <div class="search">
-                    <label>那座山是哪座山</label>
-                    
-              <select name="smountain" id="smountain" class="form-control">
-              <option>玉山國家公園</option>
-              <option>雪霸國家公園</option>
-              <option>太魯閣國家公園</option>
+                    <label>城市</label>
+             <input type="text" name="sc" class="form-control" tabindex="28" > 
               
-              </select>
                     <input type="submit" value="查詢" >
                     </div>
                     </div>
 </form>
-<form action="<c:url value='SelectMountainHouseServlet'></c:url>"method='post'>	
+<form action="<c:url value='SelectCampTownServlet'></c:url>"method='post'>	
 			<div class="moup">
                 <div class="search">
-                <label>山中小屋名</label>
+                <label>鄉鎮</label>
      
-                 <input type="text" name="sname" class="form-control" tabindex="28" >   
+                 <input type="text" name="st" class="form-control" tabindex="28" >   
+                        
+                    
+                    <input type="submit" value="查詢">
+                    </div>
+                    </div>
+</form>
+
+<form action="<c:url value='SelectCampNameServlet'></c:url>"method='post'>	
+			<div class="moup">
+                <div class="search">
+                <label>營地</label>
+     
+                 <input type="text" name="sn" class="form-control" tabindex="28" >   
                         
                     
                     <input type="submit" value="查詢">
@@ -97,28 +105,35 @@
 
 <table class="cow">
 		<thead>
-		<tr><th>山</th><th>房名</th><th>床位</th><th>營地位</th><th>海拔</th></tr>
+		<tr><th>縣市</th><th>鄉鎮</th><th>名稱</th><th>mail</th></tr>
 		</thead>
 		<body>
 <div class="cow">	
-		<c:forEach var="i" items="${all}">
-		<tr><p><td>${i.mountainName}  </td><td>  ${i.name}   </td><td>  ${i.seat}  </td><td>  ${i.campSeat}  </td><td>  ${i.hight}  </td></p></tr>
+		<c:forEach var="i" items="${camp_all}">
+		<tr><p><td>${i.city}  </td><td>  ${i.camptown}   </td><td>  ${i.campname}  </td><td>  ${i.campdesc}  </td></p></tr>
 		
 		</c:forEach>
 		
     </div>
         
 <div class="cow">	
-	<c:forEach var="k" items="${mountain}" >
-		<tr><p><td>${k.mountainName}  </td><td>  ${k.name}   </td><td>  ${k.seat}  </td><td>  ${k.campSeat}  </td><td>  ${k.hight}  </td></p></tr>
+	<c:forEach var="k" items="${camp_city}" >
+		<tr><p><td>${k.city}  </td><td>  ${k.camptown}   </td><td>  ${k.campname}  </td><td>  ${k.campdesc}  </td></p></tr>
 		</c:forEach>
 		
     </div>
 
     <div class="cow">	
     
-		<c:forEach var="j" items="${name}">
-		<tr><p><td>${j.mountainName}  </td><td>  ${j.name}   </td><td>  ${j.seat}  </td><td>  ${j.campSeat}  </td><td>  ${j.hight}  </td></p></tr>
+		<c:forEach var="j" items="${camp_town}">
+		<tr><p><td>${j.city}  </td><td>  ${j.camptown}   </td><td>  ${j.campname}  </td><td>  ${j.campdesc}  </td></p></tr>
+		</c:forEach>
+		
+    </div>
+    <div class="cow">	
+    
+		<c:forEach var="l" items="${camp_name}">
+		<tr><p><td>${l.city}  </td><td>  ${l.camptown}   </td><td>  ${l.campname}  </td><td>  ${l.campdesc}  </td></p></tr>
 		</c:forEach>
 		
     </div>

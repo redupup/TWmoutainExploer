@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import house.hList.dao.MountainHouseDAO_JDBC;
 import house.hList.model.HouseBeen;
 
-@WebServlet("/house/hList/HouseServlet")
-public class HouseServlet extends HttpServlet {
+@WebServlet("/house/hList/SelectMountainHouseServlet")
+public class SelectMountainHouseServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
@@ -22,20 +22,20 @@ public class HouseServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html;charset=UTF-8");
-		System.out.println("44");
+		System.out.println("345");
 		
-		String add = request.getParameter("inputAdd");
+		String add = request.getParameter("sname");
 		System.out.println(add);
 		MountainHouseDAO_JDBC DAO = new MountainHouseDAO_JDBC();
 		try {
-			ArrayList<HouseBeen> see =(ArrayList<HouseBeen>) DAO.listMH(add);
+//			ArrayList<HouseBeen> see =(ArrayList<HouseBeen>) DAO.listMH(add);
 //			ArrayList<HouseBeen> sm =(ArrayList<HouseBeen>) DAO.selectMountain(add);
-//			ArrayList<HouseBeen> sn =(ArrayList<HouseBeen>) DAO.selectName(add);
+			ArrayList<HouseBeen> sn =(ArrayList<HouseBeen>) DAO.selectName(add);
 			
 			
-			request.setAttribute("all", see);
+//			request.setAttribute("all", see);
 //			request.setAttribute("mountain", sm);
-//			request.setAttribute("name", sn);
+			request.setAttribute("name", sn);
 		request.getRequestDispatcher("house.jsp").forward(request, response);
 			
 		}catch (Exception e) {
