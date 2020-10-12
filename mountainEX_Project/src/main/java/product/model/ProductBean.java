@@ -6,13 +6,13 @@ public class ProductBean {
 	private String  	name;
 	private String  	type;
 	private Double  	price;
-	private String    	imgUrl;	
-	private String    	description;	
+	private Blob    	imgUrl;	
+	private Blob    	description;	
 	private String  	secondClass;
 	private Integer  	stock;
 	private Integer  	firstClassid;
 	private String  	firstClassname;
-	public ProductBean(String name, String type, Double price, String imgUrl, String description, String secondClass,
+	public ProductBean(String name, String type, Double price, Blob imgUrl, Blob description, String secondClass,
 			Integer stock, Integer firstClassid, String firstClassname) {
 		super();
 		this.name = name;
@@ -51,14 +51,14 @@ public class ProductBean {
 	public String getImgUrl() {
 		return imgUrl;
 	}
-	public void setImgUrl(String imgUrl) {
+	public void setImgUrl(Blob imgUrl) {
 		this.imgUrl = imgUrl;
 	}
 	public String getDescription() {
 		return description;
 	}
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescription(Blob blob) {
+		this.description = blob;
 	}
 	public String getSecondClass() {
 		return secondClass;
