@@ -45,6 +45,7 @@ public class ProductServlet extends HttpServlet  {
 //		service.setPageNo(pageNo);
 //		service.setRecordsPerPage(GlobalService.RECORDS_PER_PAGE);
 		Collection<ProductBean> coll = service.getProducts();
+		
 //		request.setAttribute("pageNo", pageNo);
 //		request.setAttribute("totalPages", service.getTotalPages());
 		request.setAttribute("products_DPP", coll);
