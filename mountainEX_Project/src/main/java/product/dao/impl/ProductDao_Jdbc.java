@@ -30,9 +30,12 @@ public class ProductDao_Jdbc implements ProductDao{
 	
 	DataS dataS = new DataS();
 //	String tableName = "backpack_class";
-	String tableName ;
+//	String tableName ;
 	private String selected;
 	
+	
+	
+		
 	@Override
 	public List<ProductBean> getProducts() {
 		// TODO Auto-generated method stub
