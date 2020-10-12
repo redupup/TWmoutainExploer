@@ -1,7 +1,9 @@
 package product.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -46,11 +48,16 @@ public class ProductServlet extends HttpServlet  {
 //		service.setRecordsPerPage(GlobalService.RECORDS_PER_PAGE);
 		Collection<ProductBean> coll = service.getProducts();
 		
+
 //		request.setAttribute("pageNo", pageNo);
 //		request.setAttribute("totalPages", service.getTotalPages());
 		request.setAttribute("products_DPP", coll);
 		// 交由listBooks.jsp來顯示某頁的書籍資料，同時準備『第一頁』、
 		// 『前一頁』、『下一頁』、『最末頁』等資料
+		
+		
+		
+		
 		RequestDispatcher rd = request.getRequestDispatcher("ProductMaintainList.jsp");
 		rd.forward(request, response);
 		return;
