@@ -48,13 +48,13 @@ public class ProductBean {
 	public void setPrice(Double price) {
 		this.price = price;
 	}
-	public String getImgUrl() {
+	public Blob getImgUrl() {
 		return imgUrl;
 	}
 	public void setImgUrl(Blob imgUrl) {
 		this.imgUrl = imgUrl;
 	}
-	public String getDescription() {
+	public Blob getDescription() {
 		return description;
 	}
 	public void setDescription(Blob blob) {
