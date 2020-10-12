@@ -1,5 +1,7 @@
 package product.service;
 
+import java.util.List;
+
 import product.dao.impl.ProductDao_Jdbc;
 import product.model.ProductBean;
 
@@ -10,6 +12,12 @@ public class ProductServiceImpl implements ProductService {
     
 	public ProductServiceImpl() {
 		this.dao = new ProductDao_Jdbc();
+	}
+
+	@Override
+	public List<ProductBean> getProducts() {
+		// TODO Auto-generated method stub
+		return dao.getProducts();
 	}
 
 	@Override
