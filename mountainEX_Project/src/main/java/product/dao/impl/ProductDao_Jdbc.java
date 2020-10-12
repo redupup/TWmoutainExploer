@@ -1,5 +1,6 @@
 package product.dao.impl;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.Serializable;
@@ -30,91 +31,46 @@ public class ProductDao_Jdbc implements ProductDao{
 //	String tableName = "backpack_class";
 	String tableName ;
 	private String selected;
-	public List<ProductBean> list01() {
-	dataS.setUsername("hr");
-	dataS.setUserPassword("hr");
-	DataSource datasoure = dataS.getDatasoure();
-	String sql0 = "select name,type,price,img_url,description,second_class,stock" + 
+	
+	@Override
+	public List<ProductBean> getProducts() {
+		// TODO Auto-generated method stub
+		
+		List<ProductBean> list01 = new ArrayList<ProductBean>();
+		dataS.setUsername("hr");
+		dataS.setUserPassword("hr");
+		DataSource datasoure = dataS.getDatasoure();
+		String sql0 = "select name,type,price,img_url,description,second_class,stock" + 
 			"from"+ tableName;
 	
-	String sql = sql0;
 	try (
 			Connection connection = datasoure.getConnection();
+			Statement stmt = connection.createStatement();
+			ResultSet rs = stmt.executeQuery(sql0);
 		){
-		Statement stmt = connection.createStatement();
-		ResultSet rs = stmt.executeQuery(sql0);
 		
-		List<ProductBean> pBlist = new ArrayList<ProductBean>();
 		
 		while (rs.next()) {
 			ProductBean pB = new ProductBean();
-			
 			pB.setName(rs.getString("name"));
 			pB.setType(rs.getString("type"));
 			pB.setPrice(rs.getDouble("price"));
 			pB.setSecondClass(rs.getString("second_class"));
 			pB.setStock(rs.getInt("stock"));
+			pB.setImgUrl(rs.getBlob("img_Url"));
+			pB.setDescription(rs.getBlob("description"));
 		
-			Blob imgUrl = rs.getBlob("img_url");
-			if (imgUrl != null) {
-				
-				try(
-						InputStream bS = imgUrl.getBinaryStream();
-						InputStreamReader isr = new InputStreamReader(bS);
-						) {
-					char[] chars = new char[1024];
-					int buffer ;
-					StringBuffer result = new StringBuffer();
-					while ( (buffer = isr.read(chars)) != -1) {
-						result.append(chars, 0, buffer);
-					}
-					pB.setImgUrl(result.toString());
-					
-				} catch (IOException e) {
-					System.out.println( e.getMessage());
-				}
-			}else {
-				pB.setImgUrl(null);
-			}
-			
-			Blob description = rs.getBlob("description");
-			if (description != null) {
-				
-				try(
-						InputStream bS = description.getBinaryStream();
-						InputStreamReader isr = new InputStreamReader(bS);
-						) {
-					char[] chars = new char[1024];
-					int buffer ;
-					StringBuffer result = new StringBuffer();
-					while ( (buffer = isr.read(chars)) != -1) {
-						result.append(chars, 0, buffer);
-					}
-					pB.setDescription(result.toString());
-					
-				} catch (IOException e) {
-					System.out.println( e.getMessage());
-				}
-			}else {
-				pB.setDescription(null);
-			}
-			
-			pBlist.add(pB);
-			
-			
-			
+			list01.add(pB);
+		}
+	}
+		catch (Exception e) {
+			e.printStackTrace();
 		}
 		
-		return pBlist;
+		return list01;
 		
 		
-	} catch (SQLException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	}
-	return null;
-	
-	}
+	} 
 	
 	// 修改一筆資料，不改圖片、敘述
 		public int updateProduct(ProductBean bean) {
@@ -213,8 +169,8 @@ public class ProductDao_Jdbc implements ProductDao{
 						bean.setName(rs.getString("name"));
 						bean.setType(rs.getString(2));
 						bean.setPrice(rs.getDouble(3));
-						bean.setImgUrl(rs.getString(4));
-						bean.setDescription(rs.getString(5));
+						bean.setImgUrl(rs.getBlob(4));
+						bean.setDescription(rs.getBlob(5));
 						bean.setSecondClass(rs.getString(6));
 						bean.setStock(rs.getInt(7)); 
 					}
@@ -230,4 +186,4 @@ public class ProductDao_Jdbc implements ProductDao{
 		
 	
 }
-
+}
