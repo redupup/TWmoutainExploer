@@ -20,9 +20,6 @@ import product.service.ProductServiceImpl;
 @WebServlet("/shopping/ProductServlet")
 public class ProductServlet extends HttpServlet  {
 	private static final long serialVersionUID = 1L;
-    public ProductServlet() {
-        super();
-    }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
@@ -33,7 +30,7 @@ public class ProductServlet extends HttpServlet  {
 		ProductService service = new ProductServiceImpl();
 //		request.setAttribute("baBean", service);
 		List<ProductBean> coll = service.getProducts();
-		System.out.println(coll);
+//		System.out.println(coll);
 		request.setAttribute("products_DPP", coll);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("ProductMaintainList2.jsp");

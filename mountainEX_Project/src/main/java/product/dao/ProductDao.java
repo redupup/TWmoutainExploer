@@ -21,5 +21,7 @@ public interface ProductDao {
 
 		
 	    void setSelected(String selected);
+	    
+	    int updateProduct(ProductBean bean);
 
 }

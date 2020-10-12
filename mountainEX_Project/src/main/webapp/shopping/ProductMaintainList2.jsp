@@ -39,14 +39,23 @@
 
 	<!-- 主要內容 -->
 	<div>
-		<FORM ACTION="./ShowParameters">
+		<FORM ACTION="/MaintanSevlet">
 			輸入產品名: <INPUT TYPE="TEXT" NAME="name"><BR>
+			 <INPUT	NAME="刪除" TYPE="SUBMIT" VALUE="DELETE">
+			<hr>
+			輸入型號: <INPUT TYPE="TEXT" NAME="type">
+			輸入價格: <INPUT TYPE="TEXT" NAME="price">
+			輸入圖片連結: <INPUT TYPE="TEXT" NAME="imgUrl">
+			輸入描述: <INPUT TYPE="TEXT" NAME="description">
+			輸入次分類: <INPUT TYPE="TEXT" NAME="secondClass">
+			輸入庫存: <INPUT TYPE="TEXT" NAME="stock">
+			輸入主分類: <INPUT TYPE="TEXT" NAME="firstClassname"><br>
 			 <INPUT	NAME="新增" TYPE="SUBMIT" VALUE="INSET"> 
 			 <INPUT	NAME="修改" TYPE="SUBMIT" VALUE="UPDATE">
-			 <INPUT	NAME="刪除" TYPE="SUBMIT" VALUE="DELETE">
 		</FORM>
 		
 	</div>
+	
 
 	<div id="content">
 		<table border='1'>
