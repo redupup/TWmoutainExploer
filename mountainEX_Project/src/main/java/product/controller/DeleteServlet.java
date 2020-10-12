@@ -8,8 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import _03_listBooks.service.BookService;
-import _03_listBooks.service.impl.BookServiceImpl;
 import product.service.ProductService;
 import product.service.ProductServiceImpl;
 

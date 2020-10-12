@@ -32,9 +32,6 @@ public class ProductDao_Jdbc implements ProductDao{
 //	String tableName = "backpack_class";
 //	String tableName ;
 	private String selected;
-	
-	
-	
 		
 	@Override
 	public List<ProductBean> getProducts() {
@@ -44,13 +41,32 @@ public class ProductDao_Jdbc implements ProductDao{
 		dataS.setUsername("hr");
 		dataS.setUserPassword("hr");
 		DataSource datasoure = dataS.getDatasoure();
-		String sql0 = "select name,type,price,img_url,description,second_class,stock" + 
-			"from"+ tableName;
+//		List<String> tableNameList = new ArrayList<String>();
+//	    tableNameList.add("cloth_class");
+//	    tableNameList.add("shoes_class");
+//	    tableNameList.add("kitchen_class");
+//	    tableNameList.add("tent_class");
+//	    tableNameList.add("backpack_class");
+//	    tableNameList.add("light_class");
+//	    tableNameList.add("personal_class");
+//	    tableNameList.add("promech_class");
+//	    tableNameList.add("proclimb_class");
+//	    tableNameList.add("water_class");
+//	    tableNameList.add("other_class");
+//
+//	    String teString = "select * from "+tableNameList;
+//	    for (String string : tableNameList) {
+//			
+//		}
+//	    String sql = "select name,type,price,img_url,description,second_class,stock" + 
+//	    		"from"+ "";
+	    String sql = "select name,type,price,img_url,description,second_class,stock,first_class_name " + 
+	    		"from"+ " backpack_class";
 	
 	try (
 			Connection connection = datasoure.getConnection();
 			Statement stmt = connection.createStatement();
-			ResultSet rs = stmt.executeQuery(sql0);
+			ResultSet rs = stmt.executeQuery(sql);
 		){
 		
 		
@@ -63,7 +79,7 @@ public class ProductDao_Jdbc implements ProductDao{
 			pB.setStock(rs.getInt("stock"));
 			pB.setImgUrl(rs.getBlob("img_Url"));
 			pB.setDescription(rs.getBlob("description"));
-		
+			pB.setFirstClassname(rs.getString("first_class_name"));
 			list01.add(pB);
 		}
 	}
@@ -79,7 +95,7 @@ public class ProductDao_Jdbc implements ProductDao{
 	// 修改一筆資料，不改圖片、敘述
 		public int updateProduct(ProductBean bean) {
 			int n = 0;
-			String sql = "UPDATE"+ tableName+  "SET " 
+			String sql = "UPDATE"+ "backpack"+  "SET " 
 					+ " type=?,  price=?, second_class=?,  stock=? "
 					+ " WHERE name = ?";
 			dataS.setUsername("hr");
@@ -106,7 +122,7 @@ public class ProductDao_Jdbc implements ProductDao{
 		// 依name來刪除單筆記錄
 		public int deleteProduct(String name) {
 			int n = 0;
-			String sql = "DELETE FROM"+tableName+" WHERE name = ?";
+			String sql = "DELETE FROM"+" backpack"+" WHERE name = ?";
 			dataS.setUsername("hr");
 			dataS.setUserPassword("hr");
 			DataSource datasoure = dataS.getDatasoure();
@@ -126,9 +142,9 @@ public class ProductDao_Jdbc implements ProductDao{
 		public int saveProduct(ProductBean bean) {
 			int n = 0;
 
-			String sql = "INSERT INTO "+tableName 
-					+ " (name,type,price,img_url,description,second_class,stock) "
-					+ " VALUES (?, ?, ?, ?, ?, ?, ? )";
+			String sql = "INSERT INTO "+" backpack" 
+					+ " (name,type,price,img_url,description,second_class,stock,first_class_name) "
+					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ? )";
 			dataS.setUsername("hr");
 			dataS.setUserPassword("hr");
 			DataSource datasoure = dataS.getDatasoure();
@@ -139,10 +155,11 @@ public class ProductDao_Jdbc implements ProductDao{
 				pStmt.setString(1, bean.getName());
 				pStmt.setString(2, bean.getType());
 				pStmt.setDouble(3, bean.getPrice());
-				pStmt.setString(4, bean.getImgUrl());
-				pStmt.setString(5, bean.getDescription());
+				pStmt.setBlob(4, bean.getImgUrl());
+				pStmt.setBlob(5, bean.getDescription());
 				pStmt.setString(6, bean.getSecondClass());
 				pStmt.setInt(7, bean.getStock());
+				pStmt.setString(8, bean.getFirstClassname());
 
 				n = pStmt.executeUpdate();
 			} catch (SQLException ex) {
@@ -150,6 +167,8 @@ public class ProductDao_Jdbc implements ProductDao{
 			}
 			return n;
 		}
+		
+		
 		public void setSelected(String selected) {
 			this.selected = selected;
 		}
@@ -157,8 +176,8 @@ public class ProductDao_Jdbc implements ProductDao{
 	//查詢
 		public ProductBean getProduct(String name) {
 			ProductBean bean = null;
-			String sql = "select name,type,price,img_url,description,second_class,stock" + 
-						"from" +tableName+" WHERE name = ?";
+			String sql = "select name,type,price,img_url,description,second_class,stock,first_class_name" + 
+			              " from"+ " backpack_class" +" WHERE name = ?";
 			dataS.setUsername("hr");
 			dataS.setUserPassword("hr");
 			DataSource datasoure = dataS.getDatasoure();
@@ -177,6 +196,7 @@ public class ProductDao_Jdbc implements ProductDao{
 						bean.setDescription(rs.getBlob(5));
 						bean.setSecondClass(rs.getString(6));
 						bean.setStock(rs.getInt(7)); 
+						bean.setFirstClassname(rs.getString(8));
 					}
 				}
 			} catch (SQLException ex) {
@@ -190,4 +210,4 @@ public class ProductDao_Jdbc implements ProductDao{
 		
 	
 }
-}
+

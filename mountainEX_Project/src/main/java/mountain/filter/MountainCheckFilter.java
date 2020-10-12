@@ -74,7 +74,7 @@ public class MountainCheckFilter implements Filter {
 			
 			try {
 				mBeanList= mountainDAO.routeSummary();
-				
+				System.out.println("test123");
 				for (MountainBean mountainBean2 : mBeanList) {
 					String npName = mountainBean2.getNpName();
 					switch (npName) {
