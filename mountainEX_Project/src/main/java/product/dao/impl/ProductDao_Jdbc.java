@@ -108,7 +108,7 @@ public class ProductDao_Jdbc {
 //					ps.setString(2, bean.getSecondClass());
 //					ps.setInt(3, bean.getStock());
 //					ps.setString(4, name);
-					n = ps.executeUpdate(sql);
+					n = ps.executeUpdate();
 					
 					connection.commit();
 						
