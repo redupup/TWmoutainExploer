@@ -5,14 +5,17 @@ import java.sql.Blob;
 public class ProductBean {
 	private String  	name;
 	private String  	type;
-	private Double  	price;
+	private Integer  	price;
 	private Blob    	imgUrl;	
 	private Blob    	description;	
 	private String  	secondClass;
 	private Integer  	stock;
 	private Integer  	firstClassid;
 	private String  	firstClassname;
-	public ProductBean(String name, String type, Double price, Blob imgUrl, Blob description, String secondClass,
+	
+	
+	
+	public ProductBean(String name, String type, Integer price, Blob imgUrl, Blob description, String secondClass,
 			Integer stock, Integer firstClassid, String firstClassname) {
 		super();
 		this.name = name;
@@ -42,10 +45,10 @@ public class ProductBean {
 	public void setType(String type) {
 		this.type = type;
 	}
-	public Double getPrice() {
+	public Integer getPrice() {
 		return price;
 	}
-	public void setPrice(Double price) {
+	public void setPrice(Integer price) {
 		this.price = price;
 	}
 	public Blob getImgUrl() {

@@ -58,7 +58,7 @@
 				 <INPUT	NAME="DELETE" TYPE="SUBMIT" VALUE="刪除">
 				 <br>
 				修改型號: <INPUT TYPE="TEXT" NAME="type">
-				修改價格: <INPUT TYPE="TEXT" NAME="price">
+<!-- 				修改價格: <INPUT TYPE="TEXT" NAME="price"> -->
 				修改次分類: <INPUT TYPE="TEXT" NAME="secondClass">
 				修改庫存: <INPUT TYPE="TEXT" NAME="stock">
 				 <INPUT	NAME="UPDATE" TYPE="SUBMIT" VALUE="修改">

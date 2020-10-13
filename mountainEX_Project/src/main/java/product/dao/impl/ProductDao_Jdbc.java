@@ -20,6 +20,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 import javax.swing.text.DefaultEditorKit.InsertBreakAction;
 
+import org.apache.commons.dbcp2.PStmtKey;
 import org.omg.CORBA.StringHolder;
 
 import dB.DataS;
@@ -36,7 +37,7 @@ public class ProductDao_Jdbc {
 //	String tableName ;
 	private String selected;
 
-	
+//查詢所有	
 	public List<ProductBean> getProducts() {
 		// TODO Auto-generated method stub
 
@@ -44,25 +45,6 @@ public class ProductDao_Jdbc {
 		dataS.setUsername("hr");
 		dataS.setUserPassword("hr");
 		DataSource datasoure = dataS.getDatasoure();
-//		List<String> tableNameList = new ArrayList<String>();
-//	    tableNameList.add("cloth_class");
-//	    tableNameList.add("shoes_class");
-//	    tableNameList.add("kitchen_class");
-//	    tableNameList.add("tent_class");
-//	    tableNameList.add("backpack_class");
-//	    tableNameList.add("light_class");
-//	    tableNameList.add("personal_class");
-//	    tableNameList.add("promech_class");
-//	    tableNameList.add("proclimb_class");
-//	    tableNameList.add("water_class");
-//	    tableNameList.add("other_class");
-//
-//	    String teString = "select * from "+tableNameList;
-//	    for (String string : tableNameList) {
-//			
-//		}
-//	    String sql = "select name,type,price,img_url,description,second_class,stock" + 
-//	    		"from"+ "";
 
 		try (Connection connection = datasoure.getConnection();) {
 			List<ClassBean> classList = getClassList();
@@ -95,25 +77,33 @@ public class ProductDao_Jdbc {
 	}
 
 	// 修改一筆資料，不改圖片、敘述
-	public int updateProduct(ProductBean bean , String name) {
+	public int updateProduct(ProductBean bean , String name ) {
 		int n = 0;
 		String firstClassname = bean.getFirstClassname();
+		System.out.println(firstClassname);
 		 
-		String sql = "UPDATE " + firstClassname + " SET " + " type=?,  price=?, second_class=?,  stock=? "
-				+ " WHERE name = ?";
+		String sql = "UPDATE " + firstClassname + " SET " + " type=?,  second_class=?,  stock=? "
+				+ " WHERE name = ? ";
+//		String sql = "UPDATE " + firstClassname + " SET " + " type=?,  price=?, second_class=?,  stock=? "
+//				+ " WHERE name = ?";
 		dataS.setUsername("hr");
 		dataS.setUserPassword("hr");
 		DataSource datasoure = dataS.getDatasoure();
 		try (Connection connection = datasoure.getConnection();
+				PreparedStatement ps = connection.prepareStatement(sql); 
+				
 				){
 			try {
+
 					connection.setAutoCommit(false);
-					PreparedStatement ps = connection.prepareStatement(sql); 
 					ps.setString(1, bean.getType());
-					ps.setDouble(2, bean.getPrice());
-					ps.setString(3, bean.getSecondClass());
-					ps.setInt(4, bean.getStock());
-					ps.setString(5, bean.getName());
+//					ps.setDouble(2, bean.getPrice());
+//					ps.setString(3, bean.getSecondClass());
+//					ps.setInt(4, bean.getStock());
+//					ps.setString(5, bean.getName());
+					ps.setString(2, bean.getSecondClass());
+					ps.setInt(3, bean.getStock());
+					ps.setString(4, name);
 					n = ps.executeUpdate(sql);
 					
 					connection.commit();
@@ -156,7 +146,7 @@ public class ProductDao_Jdbc {
 	}
 
 	// 新增一筆記錄---
-	public int saveProduct(ProductBean bean,String tableName) {
+	public int saveProduct(ProductBean bean) {
 		int n = 0;
 		dataS.setUsername("hr");
 		dataS.setUserPassword("hr");

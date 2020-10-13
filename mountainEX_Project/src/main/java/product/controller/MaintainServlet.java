@@ -116,11 +116,12 @@ public class MaintainServlet extends HttpServlet {
 		if (request.getParameter("INSERT") != null) {
 //		String sql2 = "INSERT INTO " + tableName
 //					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ? ,?)";
-
+			
+			
 			ProductBean aBean=new ProductBean();
 			aBean.setName(request.getParameter("name"));
 			aBean.setType(request.getParameter("type"));
-			Double doublePrice = 0.0;
+//			Double doublePrice = 0.0;
 			doublePrice= Double.parseDouble(request.getParameter("price"));
 			aBean.setPrice(doublePrice);
 			Blob imgUrlBlob = null;
@@ -168,46 +169,50 @@ public class MaintainServlet extends HttpServlet {
 		
 		//修改
 	    if (request.getParameter("UPDATE") != null) {
+	    	
+	    	String firstClassname = bean.getFirstClassname();
+	    	
 	    		    	
 	    	ProductBean aBean=new ProductBean();
-//			aBean.setName(request.getParameter("name"));
+	    	aBean.setFirstClassname(firstClassname);
+	    	
+//			aBean.setName(name);
 			aBean.setType(request.getParameter("type"));
-			Double doublePrice= Double.parseDouble(request.getParameter("price"));
-			aBean.setPrice(doublePrice);
-			Blob imgUrlBlob = null;
-			try {
-				imgUrlBlob = new SerialBlob(request.getParameter("imgUrl").getBytes("GBK"));
-			} catch (SerialException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (UnsupportedEncodingException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-			aBean.setImgUrl(imgUrlBlob);
-			Blob descriptionBlob = null;
-			try {
-				descriptionBlob = new SerialBlob(request.getParameter("description").getBytes("GBK"));
-			} catch (SerialException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (UnsupportedEncodingException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			aBean.setDescription(descriptionBlob);
+//			Double doublePrice= Double.parseDouble(request.getParameter("price"));
+//			aBean.setPrice(doublePrice);
+//			Blob imgUrlBlob = null;
+//			try {
+//				imgUrlBlob = new SerialBlob(request.getParameter("imgUrl").getBytes("GBK"));
+//			} catch (SerialException e1) {
+//				// TODO Auto-generated catch block
+//				e1.printStackTrace();
+//			} catch (UnsupportedEncodingException e1) {
+//				// TODO Auto-generated catch block
+//				e1.printStackTrace();
+//			} catch (SQLException e1) {
+//				// TODO Auto-generated catch block
+//				e1.printStackTrace();
+//			}
+//			aBean.setImgUrl(imgUrlBlob);
+//			Blob descriptionBlob = null;
+//			try {
+//				descriptionBlob = new SerialBlob(request.getParameter("description").getBytes("GBK"));
+//			} catch (SerialException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			} catch (UnsupportedEncodingException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			} catch (SQLException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			aBean.setDescription(descriptionBlob);
 			aBean.setSecondClass(request.getParameter("secondClass"));
 			int intStock = Integer.valueOf(request.getParameter("stock"));
 			aBean.setStock(intStock);		
-	    			
-	    	
-	        int torf =productDao_Jdbc.updateProduct(aBean , name);
+	    	aBean.setFirstClassname(bean.getFirstClassname());
+	        int torf =productDao_Jdbc.updateProduct(aBean , name );
 	        if (torf == 1) {
 		    	   System.out.println("修改成功");
 				} else {
