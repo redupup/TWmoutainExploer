@@ -54,13 +54,13 @@
 			
 			<div>
 			<FORM ACTION="MaintainServlet">
-				輸入產品名: <INPUT TYPE="TEXT" NAME="name"><BR>
+				輸入產品名: <INPUT TYPE="TEXT" NAME="name">
 				 <INPUT	NAME="DELETE" TYPE="SUBMIT" VALUE="刪除">
 				 <br>
-				修改型號: <INPUT TYPE="TEXT" NAME="type">
-<!-- 				修改價格: <INPUT TYPE="TEXT" NAME="price"> -->
-				修改次分類: <INPUT TYPE="TEXT" NAME="secondClass">
-				修改庫存: <INPUT TYPE="TEXT" NAME="stock">
+				修改型號: <INPUT TYPE="TEXT" NAME="type"VALUE="型號">
+				修改價格: <INPUT TYPE="TEXT" NAME="price" VALUE="100">
+				修改次分類: <INPUT TYPE="TEXT" NAME="secondClass"VALUE="次分類">
+				修改庫存: <INPUT TYPE="TEXT" NAME="stock" VALUE="100">
 				 <INPUT	NAME="UPDATE" TYPE="SUBMIT" VALUE="修改">
 				 
 			</FORM>

@@ -39,7 +39,7 @@ public class ProductServlet extends HttpServlet  {
 		session.setAttribute("ClassName", classList);
 		
 		List<ProductBean> products = new ProductDao_Jdbc().getProducts();
-		System.out.println(products);
+//		System.out.println(products);
 		session.setAttribute("products_DPP", products);
 		
 		RequestDispatcher rd = request.getRequestDispatcher("shoppingIndex.jsp");

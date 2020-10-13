@@ -58,7 +58,7 @@ public class ProductDao_Jdbc {
 					ProductBean pB = new ProductBean();
 					pB.setName(rs.getString("name"));
 					pB.setType(rs.getString("type"));
-					pB.setPrice(rs.getDouble("price"));
+					pB.setPrice(rs.getInt("price"));
 					pB.setSecondClass(rs.getString("second_class"));
 					pB.setStock(rs.getInt("stock"));
 					pB.setImgUrl(rs.getBlob("img_Url"));
@@ -77,33 +77,37 @@ public class ProductDao_Jdbc {
 	}
 
 	// 修改一筆資料，不改圖片、敘述
-	public int updateProduct(ProductBean bean , String name ) {
+	public int updateProduct(ProductBean bean) {
 		int n = 0;
 		String firstClassname = bean.getFirstClassname();
 		System.out.println(firstClassname);
 		 
-		String sql = "UPDATE " + firstClassname + " SET " + " type=?,  second_class=?,  stock=? "
-				+ " WHERE name = ? ";
-//		String sql = "UPDATE " + firstClassname + " SET " + " type=?,  price=?, second_class=?,  stock=? "
-//				+ " WHERE name = ?";
+//		String sql = "UPDATE " + firstClassname + " SET " + " type=?,  second_class=?,  stock=? "
+//				+ " WHERE name = ? ";
 		dataS.setUsername("hr");
 		dataS.setUserPassword("hr");
 		DataSource datasoure = dataS.getDatasoure();
 		try (Connection connection = datasoure.getConnection();
-				PreparedStatement ps = connection.prepareStatement(sql); 
-				
 				){
 			try {
 
-					connection.setAutoCommit(false);
+				String sql = "UPDATE " + firstClassname + " SET " + " type=?,  price=?, second_class=?,  stock=? "
+						+ " WHERE name = ? ";
+				PreparedStatement ps = connection.prepareStatement(sql); 
+				connection.setAutoCommit(false);
 					ps.setString(1, bean.getType());
-//					ps.setDouble(2, bean.getPrice());
-//					ps.setString(3, bean.getSecondClass());
-//					ps.setInt(4, bean.getStock());
-//					ps.setString(5, bean.getName());
-					ps.setString(2, bean.getSecondClass());
-					ps.setInt(3, bean.getStock());
-					ps.setString(4, name);
+					System.out.println(bean.getType());
+					ps.setDouble(2, bean.getPrice());
+					System.out.println(bean.getPrice());
+					ps.setString(3, bean.getSecondClass());
+					System.out.println(bean.getSecondClass());
+					ps.setInt(4, bean.getStock());
+					System.out.println(bean.getStock());
+					ps.setString(5, bean.getName());
+					System.out.println(bean.getName());
+//					ps.setString(2, bean.getSecondClass());
+//					ps.setInt(3, bean.getStock());
+//					ps.setString(4, name);
 					n = ps.executeUpdate(sql);
 					
 					connection.commit();
@@ -151,11 +155,13 @@ public class ProductDao_Jdbc {
 		dataS.setUsername("hr");
 		dataS.setUserPassword("hr");
 		DataSource datasoure = dataS.getDatasoure();
-//		String firstClassname = bean.getFirstClassname();
+		
+		String tablename = bean.getFirstClassname();
+		
 		try (Connection connection = datasoure.getConnection();)
 		{
 			try {
-				String sql = "INSERT INTO " + tableName
+				String sql = "INSERT INTO " + tablename
 				+ " VALUES (?, ?, ?, ?, ?, ?, ?, ? ,?)";
 				PreparedStatement pStmt = connection.prepareStatement(sql);
 				pStmt.setString(1, bean.getName());
@@ -202,7 +208,7 @@ public class ProductDao_Jdbc {
 					bean = new ProductBean();
 					bean.setName(rs.getString("name"));
 					bean.setType(rs.getString(2));
-					bean.setPrice(rs.getDouble(3));
+					bean.setPrice(rs.getInt(3));
 					bean.setImgUrl(rs.getBlob(4));
 					bean.setDescription(rs.getBlob(5));
 					bean.setSecondClass(rs.getString(6));

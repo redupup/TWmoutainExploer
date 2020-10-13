@@ -73,15 +73,15 @@
 								NAME="name"></td>
 							<td width='5%' align='center'><INPUT TYPE="TEXT" NAME="type"></td>
 							<td width='5%' align='center'><INPUT TYPE="TEXT"
-								NAME="price"></td>
+								NAME="price" VALUE="0"></td>
 							<td width='25%' align='center'><INPUT TYPE="TEXT"
-								NAME="imgUrl" VALUE="null"></td>
+								NAME="imgUrl" ></td>
 							<td width='25%' align='center'><INPUT TYPE="TEXT"
-								NAME="description" VALUE="null"></td>
+								NAME="description" ></td>
 							<td width='5%' align='center'><INPUT TYPE="TEXT"
 								NAME="secondClass"></td>
 							<td width='5%' align='center'><INPUT TYPE="TEXT"
-								NAME="stock"></td>
+								NAME="stock" VALUE="0"></td>
 							<td width='5%' align='center'><INPUT TYPE="TEXT"
 								NAME="firstClassID" id="firstClassID"readonly value="10"></td>
 							

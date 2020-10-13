@@ -38,6 +38,7 @@ public class MaintainServlet extends HttpServlet {
 		ProductDao_Jdbc productDao_Jdbc = new ProductDao_Jdbc();
 
 		String name= request.getParameter("name");
+//		String name= request.getP("name");
 		String tableName = request.getParameter("firstClassname");
 		
 		
@@ -81,14 +82,15 @@ public class MaintainServlet extends HttpServlet {
 		
 		
 		
-		ProductBean bean = null;
-		List<ProductBean> products = (List<ProductBean>) session.getAttribute("products_DPP");
-		for (ProductBean product : products) {
-			String listName = product.getName();
-			if (listName.equals(name)) {
-				bean = product;
-			}
-		}
+//		ProductBean bean = null;
+//		List<ProductBean> products = (List<ProductBean>) session.getAttribute("products_DPP");
+//		for (ProductBean product : products) {
+//			String listName = product.getName();
+//			if (listName.equals(name)) {
+//				bean = product;
+//			}
+//		}
+		
 //		if(bean == null) {
 //			response.sendRedirect("ProductServlet");
 //		}
@@ -96,8 +98,20 @@ public class MaintainServlet extends HttpServlet {
 		
 		//刪除
 		if (request.getParameter("DELETE") != null) {
+			
+			ProductBean bean = null;
+			List<ProductBean> products = (List<ProductBean>) session.getAttribute("products_DPP");
+			for (ProductBean product : products) {
+				String listName = product.getName();
+				if (listName.equals(name)) {
+					bean = product;
+				}
+			}
+			
+			
 		String name2 = bean.getName();
 		String firstClassname = bean.getFirstClassname();
+		
 		String sql = "delete from " + firstClassname + " where name='"+ name2 +"'";
 		
 				
@@ -114,28 +128,28 @@ public class MaintainServlet extends HttpServlet {
 	       } 
 		//新增
 		if (request.getParameter("INSERT") != null) {
-//		String sql2 = "INSERT INTO " + tableName
-//					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ? ,?)";
-			
 			
 			ProductBean aBean=new ProductBean();
+			aBean.setFirstClassname(request.getParameter("firstClassname"));
+			aBean.setFirstClassid(Integer.valueOf(request.getParameter("firstClassID")));
+			
 			aBean.setName(request.getParameter("name"));
 			aBean.setType(request.getParameter("type"));
-//			Double doublePrice = 0.0;
-			doublePrice= Double.parseDouble(request.getParameter("price"));
-			aBean.setPrice(doublePrice);
+			int intPrice= Integer.valueOf(request.getParameter("price"));
+			aBean.setPrice(intPrice);
 			Blob imgUrlBlob = null;
 			try {
 				imgUrlBlob = new SerialBlob(request.getParameter("imgUrl").getBytes("GBK"));
 			} catch (SerialException e1) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+//				e1.printStackTrace();
+				
 			} catch (UnsupportedEncodingException e1) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+//				e1.printStackTrace();
 			} catch (SQLException e1) {
 				// TODO Auto-generated catch block
-				e1.printStackTrace();
+//				e1.printStackTrace();
 			}
 			aBean.setImgUrl(imgUrlBlob);
 			Blob descriptionBlob = null;
@@ -143,13 +157,13 @@ public class MaintainServlet extends HttpServlet {
 				descriptionBlob = new SerialBlob(request.getParameter("description").getBytes("GBK"));
 			} catch (SerialException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+//				e.printStackTrace();
 			} catch (UnsupportedEncodingException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+//				e.printStackTrace();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+//				e.printStackTrace();
 			}
 			aBean.setDescription(descriptionBlob);
 			aBean.setSecondClass(request.getParameter("secondClass"));
@@ -157,9 +171,7 @@ public class MaintainServlet extends HttpServlet {
 			aBean.setStock(intStock);
 			
 			
-			
-			
-	     int torf = productDao_Jdbc.saveProduct( aBean , tableName);
+	     int torf = productDao_Jdbc.saveProduct(aBean);
 	     	if (torf == 1) {
 	    	   System.out.println("新增成功");
 			} else {
@@ -170,16 +182,26 @@ public class MaintainServlet extends HttpServlet {
 		//修改
 	    if (request.getParameter("UPDATE") != null) {
 	    	
-	    	String firstClassname = bean.getFirstClassname();
+	    	ProductBean bean = null;
+			List<ProductBean> products = (List<ProductBean>) session.getAttribute("products_DPP");
+			for (ProductBean product : products) {
+				String listName = product.getName();
+				if (listName.equals(name)) {
+					bean = product;
+				}
+			}
 	    	
-	    		    	
+			String firstClassname = bean.getFirstClassname();
+//	    	System.out.println(firstClassname);
+			
 	    	ProductBean aBean=new ProductBean();
 	    	aBean.setFirstClassname(firstClassname);
 	    	
-//			aBean.setName(name);
+	    	
+			aBean.setName(request.getParameter("name"));
 			aBean.setType(request.getParameter("type"));
-//			Double doublePrice= Double.parseDouble(request.getParameter("price"));
-//			aBean.setPrice(doublePrice);
+			int intPrice= Integer.valueOf(request.getParameter("price"));
+			aBean.setPrice(intPrice);
 //			Blob imgUrlBlob = null;
 //			try {
 //				imgUrlBlob = new SerialBlob(request.getParameter("imgUrl").getBytes("GBK"));
@@ -211,9 +233,9 @@ public class MaintainServlet extends HttpServlet {
 			aBean.setSecondClass(request.getParameter("secondClass"));
 			int intStock = Integer.valueOf(request.getParameter("stock"));
 			aBean.setStock(intStock);		
-	    	aBean.setFirstClassname(bean.getFirstClassname());
-	        int torf =productDao_Jdbc.updateProduct(aBean , name );
-	        if (torf == 1) {
+//	    	aBean.setFirstClassname(bean.getFirstClassname());
+	        int torf =productDao_Jdbc.updateProduct(aBean);
+	        if (torf != 0) {
 		    	   System.out.println("修改成功");
 				} else {
 					System.out.println("修改失敗");
