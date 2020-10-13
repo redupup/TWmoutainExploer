@@ -3,6 +3,7 @@ package product.service;
 import java.util.List;
 
 import product.dao.impl.ProductDao_Jdbc;
+import product.model.ClassBean;
 import product.model.ProductBean;
 
 
@@ -18,6 +19,12 @@ public class ProductServiceImpl implements ProductService {
 	public List<ProductBean> getProducts() {
 		// TODO Auto-generated method stub
 		return dao.getProducts();
+	}
+
+	@Override
+	public List<ClassBean> getClassList() {
+		// TODO Auto-generated method stub
+		return dao.getClassList();
 	}
 
 	@Override

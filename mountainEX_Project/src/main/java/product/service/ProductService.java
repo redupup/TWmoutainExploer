@@ -2,6 +2,7 @@ package product.service;
 
 import java.util.List;
 
+import product.model.ClassBean;
 import product.model.ProductBean;
 
 public interface ProductService {
@@ -14,6 +15,8 @@ public interface ProductService {
 		// 取出所有的類型
 		
 		List<ProductBean> getProducts();
+		
+		List<ClassBean> getClassList();
 		
 		// 新增一筆記錄
 		int saveProduct(ProductBean bean);

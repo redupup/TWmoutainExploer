@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+
+.sm_wait{
+	display : none;
+}
+.sm_active{
+	display : table-row;
+	width : 100%;	
+}

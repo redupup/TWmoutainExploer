@@ -1,24 +1,32 @@
 package product.controller;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.sql.DataSource;
+import javax.sql.rowset.serial.SerialBlob;
+import javax.sql.rowset.serial.SerialException;
 
+import product.dao.impl.ProductDao_Jdbc;
+import product.model.ClassBean;
 import product.model.ProductBean;
 import product.service.ProductService;
 import product.service.ProductServiceImpl;
 /**
  * Servlet implementation class MaintainServlet
  */
-@WebServlet("/MaintainServlet")
+@WebServlet("/shopping/MaintainServlet")
 public class MaintainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -26,104 +34,187 @@ public class MaintainServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html; charset=UTF-8");
 		request.setCharacterEncoding("UTF-8");
+		HttpSession session = request.getSession();
+		ProductDao_Jdbc productDao_Jdbc = new ProductDao_Jdbc();
 
 		String name= request.getParameter("name");
-		ProductBean bean = new ProductBean();
-		String type= request.getParameter("type");
-		String price= request.getParameter("price");
-		String imgUrl= request.getParameter("imgUrl");
-		String description= request.getParameter("description");
-		String secondClass= request.getParameter("secondClass");
-		String stock= request.getParameter("stock");
-		String firstClassname= request.getParameter("firstClassname");
+		String tableName = request.getParameter("firstClassname");
 		
-//		ProductService service = new ProductServiceImpl();
+		
+//		ProductBean aBean=new ProductBean();
+//		aBean.setName(request.getParameter("name"));
+//		aBean.setType(request.getParameter("type"));
+//		Double doublePrice = 0.0;
+//		doublePrice= Double.parseDouble(request.getParameter("price"));
+//		aBean.setPrice(doublePrice);
+//		Blob imgUrlBlob = null;
+//		try {
+//			imgUrlBlob = new SerialBlob(request.getParameter("imgUrl").getBytes("GBK"));
+//		} catch (SerialException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		} catch (UnsupportedEncodingException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		} catch (SQLException e1) {
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+//		aBean.setImgUrl(imgUrlBlob);
+//		Blob descriptionBlob = null;
+//		try {
+//			descriptionBlob = new SerialBlob(request.getParameter("description").getBytes("GBK"));
+//		} catch (SerialException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (UnsupportedEncodingException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		aBean.setDescription(descriptionBlob);
+//		aBean.setSecondClass(request.getParameter("secondClass"));
+//		int intStock = Integer.valueOf(request.getParameter("stock"));
+//		aBean.setStock(intStock);
+		
+		
+		
+		ProductBean bean = null;
+		List<ProductBean> products = (List<ProductBean>) session.getAttribute("products_DPP");
+		for (ProductBean product : products) {
+			String listName = product.getName();
+			if (listName.equals(name)) {
+				bean = product;
+			}
+		}
+//		if(bean == null) {
+//			response.sendRedirect("ProductServlet");
+//		}
+		
+		
+		//刪除
 		if (request.getParameter("DELETE") != null) {
-	       deleteProduct(name);
-	      } 
+		String name2 = bean.getName();
+		String firstClassname = bean.getFirstClassname();
+		String sql = "delete from " + firstClassname + " where name='"+ name2 +"'";
+		
+				
+		
+		int torf = productDao_Jdbc.deleteProduct(sql);
+	       if (torf == 1) {
+	    	   System.out.println("刪除成功");
+			} else {
+				System.out.println("刪除失敗");
+				
+			}
+//	       response.sendRedirect("shoppingIndex.jsp");
+	       
+	       } 
+		//新增
 		if (request.getParameter("INSERT") != null) {
-	        saveProduct(bean);
+//		String sql2 = "INSERT INTO " + tableName
+//					+ " VALUES (?, ?, ?, ?, ?, ?, ?, ? ,?)";
+
+			ProductBean aBean=new ProductBean();
+			aBean.setName(request.getParameter("name"));
+			aBean.setType(request.getParameter("type"));
+			Double doublePrice = 0.0;
+			doublePrice= Double.parseDouble(request.getParameter("price"));
+			aBean.setPrice(doublePrice);
+			Blob imgUrlBlob = null;
+			try {
+				imgUrlBlob = new SerialBlob(request.getParameter("imgUrl").getBytes("GBK"));
+			} catch (SerialException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (UnsupportedEncodingException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			aBean.setImgUrl(imgUrlBlob);
+			Blob descriptionBlob = null;
+			try {
+				descriptionBlob = new SerialBlob(request.getParameter("description").getBytes("GBK"));
+			} catch (SerialException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			aBean.setDescription(descriptionBlob);
+			aBean.setSecondClass(request.getParameter("secondClass"));
+			int intStock = Integer.valueOf(request.getParameter("stock"));
+			aBean.setStock(intStock);
+			
+			
+			
+			
+	     int torf = productDao_Jdbc.saveProduct( aBean , tableName);
+	     	if (torf == 1) {
+	    	   System.out.println("新增成功");
+			} else {
+				System.out.println("新增失敗");
+			}
 	      } 
+		
+		//修改
 	    if (request.getParameter("UPDATE") != null) {
-	        updateProduct(bean);
+	    		    	
+	    	ProductBean aBean=new ProductBean();
+//			aBean.setName(request.getParameter("name"));
+			aBean.setType(request.getParameter("type"));
+			Double doublePrice= Double.parseDouble(request.getParameter("price"));
+			aBean.setPrice(doublePrice);
+			Blob imgUrlBlob = null;
+			try {
+				imgUrlBlob = new SerialBlob(request.getParameter("imgUrl").getBytes("GBK"));
+			} catch (SerialException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (UnsupportedEncodingException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			aBean.setImgUrl(imgUrlBlob);
+			Blob descriptionBlob = null;
+			try {
+				descriptionBlob = new SerialBlob(request.getParameter("description").getBytes("GBK"));
+			} catch (SerialException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (UnsupportedEncodingException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			aBean.setDescription(descriptionBlob);
+			aBean.setSecondClass(request.getParameter("secondClass"));
+			int intStock = Integer.valueOf(request.getParameter("stock"));
+			aBean.setStock(intStock);		
+	    			
+	    	
+	        int torf =productDao_Jdbc.updateProduct(aBean , name);
+	        if (torf == 1) {
+		    	   System.out.println("修改成功");
+				} else {
+					System.out.println("修改失敗");
+				}
 	      } 
 		
 	}
-	// 依name來刪除單筆記錄
-			public int deleteProduct(String name) {
-				int n = 0;
-				String sql = "DELETE FROM"+" backpack"+" WHERE name = ?";
-				dataS.setUsername("hr");
-				dataS.setUserPassword("hr");
-				DataSource datasoure = dataS.getDatasoure();
-				try (
-					Connection connection = datasoure.getConnection(); 
-					PreparedStatement pStmt = connection.prepareStatement(sql);
-				) {
-					pStmt.setString(1, name);
-					n = pStmt.executeUpdate();
-				} catch (SQLException ex) {
-					ex.printStackTrace();
-				}
-				return n;
-			}
-		
-			// 新增一筆記錄---
-			public int saveProduct(ProductBean bean) {
-				int n = 0;
-
-				String sql = "INSERT INTO "+" backpack" 
-						+ " (name,type,price,img_url,description,second_class,stock,first_class_name) "
-						+ " VALUES (?, ?, ?, ?, ?, ?, ?, ? )";
-				dataS.setUsername("hr");
-				dataS.setUserPassword("hr");
-				DataSource datasoure = dataS.getDatasoure();
-				try (
-					Connection connection = datasoure.getConnection();
-					PreparedStatement pStmt = connection.prepareStatement(sql);
-				) {
-					pStmt.setString(1, bean.getName());
-					pStmt.setString(2, bean.getType());
-					pStmt.setDouble(3, bean.getPrice());
-					pStmt.setBlob(4, bean.getImgUrl());
-					pStmt.setBlob(5, bean.getDescription());
-					pStmt.setString(6, bean.getSecondClass());
-					pStmt.setInt(7, bean.getStock());
-					pStmt.setString(8, bean.getFirstClassname());
-
-					n = pStmt.executeUpdate();
-				} catch (SQLException ex) {
-					ex.printStackTrace();
-				}
-				return n;
-			}
-			
-			// 修改一筆資料
-			public int updateProduct(ProductBean bean) {
-				int n = 0;
-				String sql = "UPDATE"+ "backpack"+  "SET " 
-						+ " type=?,  price=?, second_class=?,  stock=? "
-						+ " WHERE name = ?";
-				dataS.setUsername("hr");
-				dataS.setUserPassword("hr");
-				DataSource datasoure = dataS.getDatasoure();
-				try (
-						Connection connection = datasoure.getConnection();
-						PreparedStatement ps = connection.prepareStatement(sql);
-				) {
-					ps.clearParameters();
-					ps.setString(1, bean.getType());
-					ps.setDouble(2, bean.getPrice());
-					ps.setString(3, bean.getSecondClass());
-					ps.setInt(4, bean.getStock());
-					ps.setString(5, bean.getName());
-
-					n = ps.executeUpdate();
-				} catch (SQLException ex) {
-					ex.printStackTrace();
-				}
-				return n;
-			}
-
-
 }
+	
