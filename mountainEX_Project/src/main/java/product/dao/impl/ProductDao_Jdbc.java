@@ -82,8 +82,6 @@ public class ProductDao_Jdbc {
 		String firstClassname = bean.getFirstClassname();
 		System.out.println(firstClassname);
 		 
-//		String sql = "UPDATE " + firstClassname + " SET " + " type=?,  second_class=?,  stock=? "
-//				+ " WHERE name = ? ";
 		dataS.setUsername("hr");
 		dataS.setUserPassword("hr");
 		DataSource datasoure = dataS.getDatasoure();
@@ -105,9 +103,6 @@ public class ProductDao_Jdbc {
 					System.out.println(bean.getStock());
 					ps.setString(5, bean.getName());
 					System.out.println(bean.getName());
-//					ps.setString(2, bean.getSecondClass());
-//					ps.setInt(3, bean.getStock());
-//					ps.setString(4, name);
 					n = ps.executeUpdate();
 					
 					connection.commit();
@@ -174,7 +169,7 @@ public class ProductDao_Jdbc {
 				pStmt.setInt(8, bean.getFirstClassid());
 				pStmt.setString(9, bean.getFirstClassname());
 				connection.setAutoCommit(false);
-				n =pStmt.executeUpdate(sql);
+				n =pStmt.executeUpdate();
 				
 				connection.commit();
 				
