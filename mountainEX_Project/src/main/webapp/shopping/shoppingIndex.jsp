@@ -141,9 +141,9 @@
 	<script>
 		$(".shopping_nav").find(".top").on("click",function(){
 			let thisID = $(this).attr("id");
-			/* console.log(thisID); */
+			 console.log(thisID); 
 			let td = $("."+thisID);
-			/* console.log(td); */
+			 console.log(td); 
 			$("tbody").find("tr:gt(0)").removeClass("sm_active").addClass("sm_wait")
 			$("."+thisID).parent().removeClass("sm_wait").addClass("sm_active")
 			
