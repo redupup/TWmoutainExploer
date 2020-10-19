@@ -16,8 +16,6 @@ import javax.servlet.http.HttpSession;
 import product.dao.impl.ProductDao_Jdbc;
 import product.model.ClassBean;
 import product.model.ProductBean;
-import product.service.ProductService;
-import product.service.ProductServiceImpl;
 
 @WebServlet("/shopping/ProductServlet")
 public class ProductServlet extends HttpServlet  {
@@ -25,20 +23,15 @@ public class ProductServlet extends HttpServlet  {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
 	}
-
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
-		
-		
-//		
-		
 		HttpSession session = request.getSession();
-		
-		List<ClassBean> classList = new ProductDao_Jdbc().getClassList();
-		
+
+		ProductDao_Jdbc productDao_Jdbc = new ProductDao_Jdbc();
+		List<ClassBean> classList = productDao_Jdbc.getClassList();
 		session.setAttribute("ClassName", classList);
-		
-		List<ProductBean> products = new ProductDao_Jdbc().getProducts();
+		List<ProductBean> products = productDao_Jdbc.getProducts();
 //		System.out.println(products);
 		session.setAttribute("products_DPP", products);
 		
@@ -46,8 +39,6 @@ public class ProductServlet extends HttpServlet  {
 		rd.forward(request, response);
 		
 		return;
-	
-	
 	
 	}
 

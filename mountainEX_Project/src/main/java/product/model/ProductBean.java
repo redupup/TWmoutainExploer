@@ -13,11 +13,12 @@ public class ProductBean {
 	private Integer  	firstClassid;
 	private String  	firstClassname;
 	
-	
+	public ProductBean() {
+		
+	}
 	
 	public ProductBean(String name, String type, Integer price, Blob imgUrl, Blob description, String secondClass,
 			Integer stock, Integer firstClassid, String firstClassname) {
-		super();
 		this.name = name;
 		this.type = type;
 		this.price = price;
@@ -29,9 +30,6 @@ public class ProductBean {
 		this.firstClassname = firstClassname;
 	}
 	
-	public ProductBean() {
-		
-	}
 	
 	public String getName() {
 		return name;

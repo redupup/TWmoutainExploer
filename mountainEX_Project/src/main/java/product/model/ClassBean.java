@@ -4,6 +4,9 @@ public class ClassBean {
 	private int tableID;
 	private String  tableName;
 	private String  tableTitle;
+	
+	public ClassBean() {
+	}
 
 	public String getTableTitle() {
 		return tableTitle;

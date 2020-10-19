@@ -26,34 +26,30 @@ import org.omg.CORBA.StringHolder;
 import dB.DataS;
 import mountain.mountainList.model.MountainBean;
 import oracle.net.aso.b;
-import product.dao.ProductDao;
 import product.model.ClassBean;
 import product.model.ProductBean;
 
 public class ProductDao_Jdbc {
 
 	DataS dataS = new DataS();
-//	String tableName = "backpack_class";
-//	String tableName ;
-	private String selected;
+	
+	public ProductDao_Jdbc() {
+	}
 
 //查詢所有	
 	public List<ProductBean> getProducts() {
-		// TODO Auto-generated method stub
-
-		List<ProductBean> list01 = new ArrayList<ProductBean>();
+		List<ProductBean> products = new ArrayList<ProductBean>();
 		dataS.setUsername("hr");
 		dataS.setUserPassword("hr");
 		DataSource datasoure = dataS.getDatasoure();
 
-		try (Connection connection = datasoure.getConnection();) {
+		try (Connection connection = datasoure.getConnection();
+				) {
 			List<ClassBean> classList = getClassList();
 			for (ClassBean classBean : classList) {
 				String sql = "select name,type,price,img_url,description,second_class,stock,first_class_name from " +classBean.getTableName();
-				
 				Statement stmt = connection.createStatement();
 				ResultSet rs = stmt.executeQuery(sql);
-				
 				while (rs.next()) {
 					ProductBean pB = new ProductBean();
 					pB.setName(rs.getString("name"));
@@ -64,15 +60,14 @@ public class ProductDao_Jdbc {
 					pB.setImgUrl(rs.getBlob("img_Url"));
 					pB.setDescription(rs.getBlob("description"));
 					pB.setFirstClassname(rs.getString("first_class_name"));
-					list01.add(pB);
+					products.add(pB);
 				}
-
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		return list01;
+		return products;
 
 	}
 
@@ -152,7 +147,6 @@ public class ProductDao_Jdbc {
 		DataSource datasoure = dataS.getDatasoure();
 		
 		String tablename = bean.getFirstClassname();
-		
 		try (Connection connection = datasoure.getConnection();)
 		{
 			try {
@@ -170,9 +164,8 @@ public class ProductDao_Jdbc {
 				pStmt.setString(9, bean.getFirstClassname());
 				connection.setAutoCommit(false);
 				n =pStmt.executeUpdate();
-				
+			
 				connection.commit();
-				
 			} catch (SQLException e) {
 				e.printStackTrace();
 				connection.rollback();
@@ -181,10 +174,6 @@ public class ProductDao_Jdbc {
 			ex.printStackTrace();
 		}
 		return n;
-	}
-
-	public void setSelected(String selected) {
-		this.selected = selected;
 	}
 
 	// 查詢
@@ -218,7 +207,6 @@ public class ProductDao_Jdbc {
 	}
 
 	public List<ClassBean> getClassList() {
-		// TODO Auto-generated method stub
 		List<ClassBean> classBeans = new ArrayList<ClassBean>();
 		dataS.setUsername("hr");
 		dataS.setUserPassword("hr");
@@ -240,9 +228,6 @@ public class ProductDao_Jdbc {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-
 		return classBeans;
-
 	}
-
 }

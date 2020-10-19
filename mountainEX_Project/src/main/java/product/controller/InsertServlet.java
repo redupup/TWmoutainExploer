@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
-import product.service.ProductService;
+import product.service.IProductService;
 
 /**
  * Servlet implementation class InsertServlet

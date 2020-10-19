@@ -3,8 +3,6 @@ package product.controller;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.sql.Blob;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.List;
 
@@ -22,8 +20,8 @@ import javax.sql.rowset.serial.SerialException;
 import product.dao.impl.ProductDao_Jdbc;
 import product.model.ClassBean;
 import product.model.ProductBean;
+import product.service.IProductService;
 import product.service.ProductService;
-import product.service.ProductServiceImpl;
 /**
  * Servlet implementation class MaintainServlet
  */
@@ -39,7 +37,6 @@ public class MaintainServlet extends HttpServlet {
 		ProductDao_Jdbc productDao_Jdbc = new ProductDao_Jdbc();
 
 		String name= request.getParameter("name");
-//		String name= request.getP("name");
 		String tableName = request.getParameter("firstClassname");
 		
 		

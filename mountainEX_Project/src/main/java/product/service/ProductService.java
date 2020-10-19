@@ -2,26 +2,46 @@ package product.service;
 
 import java.util.List;
 
+import product.dao.impl.ProductDao_Jdbc;
 import product.model.ClassBean;
 import product.model.ProductBean;
 
-public interface ProductService {
-	// 依name來刪除單筆記錄
-		int deleteProduct(String name);
-		
-		// 依name來查詢單筆記錄
-		ProductBean getProduct(String name);
 
-		// 取出所有的類型
-		
-		List<ProductBean> getProducts();
-		
-		List<ClassBean> getClassList();
-		
-		// 新增一筆記錄
-		int saveProduct(ProductBean bean);
+public class ProductService implements IProductService {
+    
+    ProductDao_Jdbc dao;
+    
+	public ProductService() {
+		this.dao = new ProductDao_Jdbc();
+	}
 
-		void setSelected(String selected);
+	@Override
+	public List<ProductBean> getProducts() {
+		// TODO Auto-generated method stub
+		return dao.getProducts();
+	}
 
+	@Override
+	public List<ClassBean> getClassList() {
+		// TODO Auto-generated method stub
+		return dao.getClassList();
+	}
+
+	@Override
+	public int deleteProduct(String name) {
+		return dao.deleteProduct(name);
+	}
+
+	@Override
+	public int saveProduct(ProductBean bean) {
+		// TODO Auto-generated method stub
+		return dao.saveProduct(bean);
+	}
+
+	@Override
+	public int updateProduct(ProductBean bean) {
+		// TODO Auto-generated method stub
+		return dao.updateProduct(bean);
+	}
 
 }
